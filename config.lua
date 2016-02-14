@@ -67,7 +67,7 @@ Send /help to get started.
 	plugins = {
 		'control.lua',
 		'blacklist.lua',
-		'wikipedia.lua',
+		'gSearch.lua',
 		'greetings.lua'
 	}
 }
