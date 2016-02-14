@@ -1,15 +1,15 @@
-local command = 'wikipedia <query>'
+local command = 'github <name>'
 local doc = [[```
-/wikipedia <query>
-Returns an article from Wikipedia.
-Aliases: /w, /wiki
+/github <name>
+Github addresses based on the name of the Search.
+Aliases: /g, /gith
 ```]]
 
 local triggers = {
-	'^/wikipedia[@'..bot.username..']*',
-	'^/wiki[@'..bot.username..']*',
-	'^/w[@'..bot.username..']*$',
-	'^/w[@'..bot.username..']* '
+	'^/github[@'..bot.username..']*',
+	'^/gith[@'..bot.username..']*',
+	'^/g[@'..bot.username..']*$',
+	'^/g[@'..bot.username..']* '
 }
 
 local action = function(msg)
@@ -24,8 +24,8 @@ local action = function(msg)
 		end
 	end
 
-	local gurl = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=1&q=site:wikipedia.org%20'
-	local wurl = 'https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exchars=4000&exsectionformat=plain&titles='
+	local gurl = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=1&q=site:github.com%20'
+	local wurl = 'https://en.github.com/g/api.php?action=query&prop=extracts&format=json&exchars=4000&exsectionformat=plain&titles='
 
 	local jstr, res = HTTPS.request(gurl .. URL.escape(input))
 	if res ~= 200 then
