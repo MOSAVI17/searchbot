@@ -25,7 +25,7 @@ local action = function(msg)
 	end
 
 	local gurl = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=1&q=site:github.com%20'
-	local wurl = 'https://en.github.com/g/api.php?action=query&prop=extracts&format=json&exchars=4000&exsectionformat=plain&titles='
+	
 
 	local jstr, res = HTTPS.request(gurl .. URL.escape(input))
 	if res ~= 200 then
@@ -44,9 +44,9 @@ local action = function(msg)
 	end
 --
 	local url = jdat.responseData.results[1].url
-	local title = jdat.responseData.results[1].titleNoFormatting:gsub(' %- Wikipedia, the free encyclopedia', '')
+	local title = jdat.responseData.results[1].titleNoFormatting:gsub(' %- github, the free encyclopedia', '')
 
-	jstr, res = HTTPS.request(wurl .. URL.escape(title))
+	jstr, res = HTTPS.request(gurl .. URL.escape(title))
 	if res ~= 200 then
 		sendReply(msg, config.error.connection)
 		return
