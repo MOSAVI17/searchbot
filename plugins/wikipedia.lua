@@ -24,7 +24,7 @@ local action = function(msg)
 		end
 	end
 
-	local gurl = 'https://https://github.com/search?utf8=%E2%9C%93&q=
+	local gurl = 'https://github.com/search?utf8=%E2%9C%93&q='
 	
 
 	local jstr, res = HTTPS.request(gurl .. URL.escape(input))
