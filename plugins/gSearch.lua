@@ -1,15 +1,14 @@
-local command = 'google <query>'
+local command = 'github <name>'
 local doc = [[```
-/google <query>
-Returns four (if group) or eight (if private message) results from Google. Safe search is enabled by default, use "/gnsfw" to disable it.
-Alias: /g
+/github <name>
+Github addresses based on the name of the Search.
 ```]]
 
 local triggers = {
-	'^/g[@'..bot.username..']*$',
-	'^/g[@'..bot.username..']* ',
-	'^/google[@'..bot.username..']*',
-	'^/gnsfw[@'..bot.username..']*'
+	'^/github[@'..bot.username..']*$',
+	'^/github[@'..bot.username..']* ',
+	'^/github[@'..bot.username..']*',
+	'^/github[@'..bot.username..']*'
 }
 
 local action = function(msg)
@@ -24,7 +23,7 @@ local action = function(msg)
 		end
 	end
 
-	local url = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0'
+	local url = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=1&q=site:github.com%20'
 
 	if msg.from.id == msg.chat.id then
 		url = url .. '&rsz=8'
@@ -32,7 +31,7 @@ local action = function(msg)
 		url = url .. '&rsz=4'
 	end
 
-	if not string.match(msg.text, '^/g[oogle]*nsfw') then
+	if not string.match(msg.text, '^/g[ithub]*nsfw') then
 		url = url .. '&safe=active'
 	end
 
