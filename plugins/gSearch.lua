@@ -23,7 +23,7 @@ local action = function(msg)
 		end
 	end
 
-	local url = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=1&q=site:github.com%20'
+	local url = 'https://github.com/search?utf8=%E2%9C%93&q='
 
 	if msg.from.id == msg.chat.id then
 		url = url .. '&rsz=8'
